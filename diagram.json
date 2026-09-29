@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "IoT Mini Project",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -95, "left": 215, "attrs": {} },
+    { "type": "wokwi-led", "id": "ledRed", "top": 20, "left": 300, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "ledGreen", "top": 90, "left": 300, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 60, "left": 250, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 130, "left": 250, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v0" ] ],
+    [ "esp:D2", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "ledRed:A", "red", [ "v0" ] ],
+    [ "ledRed:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:D4", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "ledGreen:A", "green", [ "v0" ] ],
+    [ "ledGreen:C", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
